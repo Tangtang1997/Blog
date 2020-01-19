@@ -1,4 +1,4 @@
-﻿namespace Blog.Core.Entities.Base
+﻿namespace Blog.Core.Infrastructure.DomainEntities
 {
     public class Entity<TKey> : IEntity<TKey>
     {

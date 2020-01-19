@@ -1,7 +1,9 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using Blog.Infrastructure.EntityFrameworkCore;
+using Blog.EntityFrameworkCore.EntityFrameworkCore;
+using Blog.Web.Extensions;
+using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +11,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace Blog.Web
 {
     public class Startup
     {
+        public static ILoggerRepository LoggerRepository { get; set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,12 +34,18 @@ namespace Blog.Web
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
+            services.AddAutoMapperSetup();
+
             services.AddControllersWithViews()
                 .AddControllersAsServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            ILoggerFactory loggerFactory
+            )
         {
             if (env.IsDevelopment())
             {
@@ -68,17 +79,19 @@ namespace Blog.Web
             var entryAssembly = Assembly.GetEntryAssembly()
                 ?.GetReferencedAssemblies()
                 .Select(Assembly.Load)
-                .Where(x => x.FullName.Contains("Blog.Application")
-                                 || x.FullName.Contains("Blog.Core")
-                                 || x.FullName.Contains("Blog.Infrastructure"))
+                .Where(x => x.FullName.Contains(".Application")
+                                 || x.FullName.Contains(".Core")
+                                 || x.FullName.Contains(".EntityFrameworkCore"))
                 .ToArray();
 
-            // Ìí¼Ó²Ö´¢×¢²á
             builder.RegisterAssemblyTypes(entryAssembly)
                 .Where(x => x.Name.EndsWith("Repository"))
                 .AsImplementedInterfaces();
 
-            // Ìí¼Ó·þÎñ×¢²á
+            builder.RegisterAssemblyTypes(Assembly.Load("Blog.Core"))
+                .Where(x => x.Name.EndsWith("Manager"))
+                .AsSelf();
+
             builder.RegisterAssemblyTypes(entryAssembly)
                 .Where(x => x.Name.EndsWith("Service"))
                 .AsImplementedInterfaces();

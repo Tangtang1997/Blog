@@ -1,7 +1,7 @@
-﻿using Blog.Core.Entities;
+﻿using Blog.Core.Students;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.EntityFrameworkCore
+namespace Blog.EntityFrameworkCore.EntityFrameworkCore
 {
     public class ApplicationDbContext : DbContext
     {

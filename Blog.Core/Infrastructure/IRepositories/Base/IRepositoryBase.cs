@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Blog.Core.IRepositories.Base
+namespace Blog.Core.Infrastructure.IRepositories.Base
 {
     public interface IRepositoryBase<TEntity, in TKey> where TEntity : class
     {

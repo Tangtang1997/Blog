@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Threading.Tasks;
-using Blog.Application.DomainServices.Students;
-using Blog.Core.Entities;
+using Blog.Application.Services.Students;
+using Blog.Application.Services.Students.Dto;
+using Blog.Core.Students;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Blog.Web.Models;
@@ -11,35 +12,30 @@ namespace Blog.Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ITestService _testService;
         private readonly IStudentService _studentService;
 
         public HomeController(
             ILogger<HomeController> logger,
-            ITestService testService,
             IStudentService studentService
             )
         {
             _logger = logger;
-            _testService = testService;
             _studentService = studentService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var studentModel = new Student
+            var studentModel = new StudentDto
             {
-                Name = "test"
+                Name = "test",
+                Age = 18
             };
 
-            var isInsert = await _studentService.AddAsync(studentModel);
+            var isSucceed = await _studentService.AddAsync(studentModel);
 
-            var student = await _studentService.GetByIdAsync(1);
+            var studentDto = await _studentService.GetByIdAsync(1);
 
-            var studentList = await _studentService.GetAllListAsync();
-
-
-            var number = await _testService.TestAsync();
+            var studentDtos = await _studentService.GetAllAsync();
 
             return View();
         }

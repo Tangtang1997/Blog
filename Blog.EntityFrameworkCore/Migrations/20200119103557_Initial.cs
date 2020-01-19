@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Blog.Infrastructure.Migrations
+namespace Blog.EntityFrameworkCore.Migrations
 {
     public partial class Initial : Migration
     {
@@ -12,7 +12,8 @@ namespace Blog.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 50, nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Age = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {

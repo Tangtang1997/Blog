@@ -7,6 +7,8 @@
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.9.4" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -21,7 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Blog.Application\Blog.Application.csproj" />
     <ProjectReference Include="..\Blog.Core\Blog.Core.csproj" />
-    <ProjectReference Include="..\Blog.Infrastructure\Blog.Infrastructure.csproj" />
+    <ProjectReference Include="..\Blog.EntityFrameworkCore\Blog.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Blog.Migrator\Blog.Migrator.csproj" />
   </ItemGroup>
 
 

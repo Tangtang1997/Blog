@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Blog.Core.IRepositories.Base;
+using Blog.Core.Infrastructure.IRepositories.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace Blog.Infrastructure.Repositories.Base
+namespace Blog.EntityFrameworkCore.Repositories.Base
 {
     public class RepositoryBase<TEntity, TKey> : IRepositoryBase<TEntity, TKey> where TEntity : class
     {
