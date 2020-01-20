@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Blog.Application.Services.Students.Dto;
-using Blog.Core.Students;
+using Blog.Core.Infrastructure.Students;
 
-namespace Blog.Application.Infrastructure.AutoMapper
+namespace Blog.Application.AutoMapper
 {
     public class EntityToDtoProfile : Profile
     {

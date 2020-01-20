@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoMapper;
-using Blog.Application.Infrastructure.AutoMapper;
+using Blog.Application.AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Blog.Web.Extensions

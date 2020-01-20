@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Blog.Application.Infrastructure.AutoMapper
+namespace Blog.Application.AutoMapper
 {
     /// <summary>
     /// 静态全局AutoMapper配置文件
