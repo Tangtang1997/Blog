@@ -3,7 +3,6 @@ using System.Reflection;
 using Autofac;
 using Blog.EntityFrameworkCore.EntityFrameworkCore;
 using Blog.Web.Extensions;
-using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace Blog.Web
 {
     public class Startup
     {
-        public static ILoggerRepository LoggerRepository { get; set; }
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,23 +25,33 @@ namespace Blog.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            #region EntityFrameworkCore
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
+            #endregion
+
+            #region AutoMapper
+
             services.AddAutoMapperSetup();
+
+            #endregion
+
+            #region Autofac
 
             services.AddControllersWithViews()
                 .AddControllersAsServices();
+
+            #endregion
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(
-            IApplicationBuilder app,
-            IWebHostEnvironment env,
-            ILoggerFactory loggerFactory
-            )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -75,7 +81,6 @@ namespace Blog.Web
         /// <param name="builder"></param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // 查找引用的程序集
             var entryAssembly = Assembly.GetEntryAssembly()
                 ?.GetReferencedAssemblies()
                 .Select(Assembly.Load)
