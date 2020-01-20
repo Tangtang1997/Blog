@@ -1,5 +1,5 @@
-﻿using Blog.Core.Infrastructure.IRepositories;
-using Blog.Core.Infrastructure.Students;
+﻿using Blog.Core.IRepositories;
+using Blog.Core.Students;
 using Blog.EntityFrameworkCore.EntityFrameworkCore;
 using Blog.EntityFrameworkCore.Repositories.Base;
 

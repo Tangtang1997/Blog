@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Blog.Application.Services.Students.Dto;
-using Blog.Core.Infrastructure.Students;
+using Blog.Core.Students;
 
 namespace Blog.Application.Services.Students
 {
