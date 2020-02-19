@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Blog.Core.IRepositories.Base;
-using Microsoft.EntityFrameworkCore;
-
-namespace Blog.EntityFrameworkCore.Repositories.Base
-{
-    /// <summary>
+﻿/// <summary>
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity">泛型实体</typeparam>
@@ -328,4 +318,3 @@ namespace Blog.EntityFrameworkCore.Repositories.Base
 
         #endregion 
     }
-}

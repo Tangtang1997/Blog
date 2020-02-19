@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Blog.Core.Infrastructure.Enums
-{
+namespace Blog.Core.Constant.Enums 
+{ 
     /// <summary>
     /// 性别枚举
     /// </summary>

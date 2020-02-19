@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Reflection;
 using Autofac;
-using Blog.EntityFrameworkCore.EntityFrameworkCore;
+using Blog.Infrastructure.EntityFrameworkCore;
 using Blog.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,7 +28,7 @@ namespace Blog.Web
 
             #region EntityFrameworkCore
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<BlogDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });

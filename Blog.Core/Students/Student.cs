@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Blog.Core.Infrastructure.Entities;
-using Blog.Core.Infrastructure.Enums;
+using Blog.Core.Constant.Enums;
+using Blog.Domain.Entities;
 
 namespace Blog.Core.Students
 {

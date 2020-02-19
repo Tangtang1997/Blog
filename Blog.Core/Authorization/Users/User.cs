@@ -1,4 +1,4 @@
-﻿using Blog.Core.Infrastructure.Entities;
+﻿using Blog.Domain.Entities;
 
 namespace Blog.Core.Authorization.Users
 {

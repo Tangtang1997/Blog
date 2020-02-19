@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Log4NetConfig\" />
+    <Folder Include="Domain\Entities\Auditing\" />
   </ItemGroup>
 
 </Project>
