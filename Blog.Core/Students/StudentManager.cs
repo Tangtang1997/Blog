@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Blog.Core.Infrastructure.IRepositories;
+using Blog.Core.IRepositories;
 
 namespace Blog.Core.Students
 {
@@ -22,7 +22,7 @@ namespace Blog.Core.Students
 
         public async Task<Student> GetByIdAsync(int id)
         {
-            return await _studentRepository.FindByIdAsync(id);
+            return await _studentRepository.FindEntityByIdAsync(id);
         }
 
         public async Task<List<Student>> GetAllAsync()
